@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>LitePDF</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--bg:#1e1f22;--pn:#2b2d31;--ac:#4c8bf5;--tx:#e6e6e6;--mu:#9aa0a6}
+*{box-sizing:border-box}body{margin:0;font:13px system-ui,Segoe UI,sans-serif;background:var(--bg);color:var(--tx);height:100vh;display:flex;flex-direction:column}
+#bar{display:flex;flex-wrap:wrap;gap:4px;padding:6px;background:var(--pn);align-items:center;border-bottom:1px solid #000}
+button,select,input,textarea{font:inherit}button{background:#3a3d44;color:var(--tx);border:1px solid #555;border-radius:4px;padding:4px 9px;cursor:pointer}
+button:hover{background:#464a52}button.on{background:var(--ac);border-color:var(--ac)}button:disabled{opacity:.4}
+.sep{width:1px;height:22px;background:#555;margin:0 4px}
+#main{flex:1;display:flex;min-height:0}
+#thumbs{width:150px;overflow:auto;background:#232428;padding:6px;border-right:1px solid #000}
+.th{position:relative;margin-bottom:8px;border:2px solid transparent;border-radius:3px;cursor:pointer;text-align:center}
+.th.cur{border-color:var(--ac)}.th img{width:100%;display:block;background:#fff}.th .n{font-size:11px;color:var(--mu)}
+.th .tb{display:none;position:absolute;top:2px;right:2px;gap:2px}.th:hover .tb{display:flex}.th .tb button{padding:0 5px;font-size:12px}
+#docs{flex:1;overflow:auto;position:relative}
+.pg{position:relative;margin:12px auto;background:#fff;box-shadow:0 2px 8px #000}
+.pg img{display:block;width:100%;height:100%;user-select:none;-webkit-user-drag:none}
+.ov{position:absolute;inset:0;touch-action:none}
+.sel{position:absolute;border:1px dashed var(--ac);background:rgba(76,139,245,.2);pointer-events:none}
+.wd{position:absolute;background:rgba(120,170,255,.25);border:1px solid #4c8bf5;padding:0 2px;margin:0;font-size:12px;color:#000}
+#side{width:340px;background:var(--pn);border-left:1px solid #000;display:none;flex-direction:column;padding:8px;gap:6px;overflow:auto}
+#side.show{display:flex}#side textarea{width:100%;min-height:70px;background:#1b1c1f;color:var(--tx);border:1px solid #555;border-radius:4px}
+#chat{flex:1;min-height:120px;overflow:auto;white-space:pre-wrap;background:#1b1c1f;border-radius:4px;padding:6px}
+#chat .u{color:#8ab4f8;margin-top:6px}#chat .a{margin-bottom:6px}
+#status{padding:3px 8px;background:#111;color:var(--mu);font-size:12px;display:flex;justify-content:space-between}
+dialog{background:var(--pn);color:var(--tx);border:1px solid #666;border-radius:8px;min-width:340px}dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog label{display:block;margin:8px 0 2px;color:var(--mu)}dialog input,dialog select{width:100%;background:#1b1c1f;color:var(--tx);border:1px solid #555;border-radius:4px;padding:4px}
+dialog menu{display:flex;gap:6px;justify-content:flex-end;padding:0;margin:12px 0 0}
+#empty{margin:20vh auto;text-align:center;color:var(--mu)}
+</style></head><body>
+<div id="bar">
+ <button id="bOpen">Open</button><button id="bSave" disabled>Save</button><button id="bSaveAs" disabled>Save as…</button>
+ <span class="sep"></span>
+ <button id="bUndo" disabled>Undo</button><button id="bRedo" disabled>Redo</button>
+ <span class="sep"></span>
+ <span id="tools">
+ <button data-t="view" class="on">Select</button><button data-t="Highlight">Highlight</button><button data-t="Underline">Underline</button><button data-t="StrikeOut">Strike</button>
+ <button data-t="Ink">Draw</button><button data-t="Square">Box</button><button data-t="Line">Line</button><button data-t="Text">Note</button><button data-t="FreeText">Text</button><button data-t="Redact">Mark redaction</button>
+ </span>
+ <select id="color"><option>yellow</option><option>green</option><option>red</option><option>blue</option><option>black</option></select>
+ <span class="sep"></span>
+ <button id="bFind">Find</button><button id="bRedText">Redact text…</button><button id="bApply">Apply redactions</button>
+ <span class="sep"></span>
+ <button id="bMerge">Merge…</button><button id="bSplit">Split…</button><button id="bCompress">Compress…</button><button id="bProt">Password…</button><button id="bSign">Sign…</button><button id="bOcr">OCR…</button><button id="bAI">AI</button>
+ <span class="sep"></span><button id="bZoomOut">−</button><button id="bZoomIn">+</button>
+</div>
+<div id="main">
+ <div id="thumbs"></div>
+ <div id="docs"><div id="empty">Open a PDF (button above, or drop a file here)</div></div>
+ <div id="side"><b>AI</b>
+  <div id="chat"></div>
+  <textarea id="aiq" placeholder="Ask about this document, or describe what to extract…"></textarea>
+  <select id="aiScope"><option value="doc">Whole document (text)</option><option value="page">Current page (as image)</option></select>
+  <div style="display:flex;gap:4px"><button id="aiSum">Summarise</button><button id="aiAsk">Ask / extract</button><button id="aiSet">Key…</button></div>
+ </div>
+</div>
+<div id="status"><span id="st">Ready</span><span id="pgno"></span></div>
+<input type="file" id="fileIn" accept="application/pdf,.pdf" multiple hidden>
+<dialog id="dlg"><form method="dialog" id="dform"></form></dialog>
+<script type="module" src="app.js"></script>
+</body></html>
