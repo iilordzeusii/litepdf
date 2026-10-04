@@ -1,0 +1,10 @@
+node_modules/
+web/vendor/
+go/dist/
+*.exe
+litepdf-linux-test
+test/out_*
+test/*.pdf
+test/*.pfx
+test/*.png
+test/*.jpg
