@@ -1,0 +1,3 @@
+tools agent_message send --to agent-01M2K1RFG71SJETW3996TFKAT0 --message-stdin <<'EOF'
+Plan updated, still not building. AI page limit: one "Pages sent to AI" selector (Current page default / Page range from-to / Whole document), no max cap and no built-in limits. Live line under it only: "Sending N pages" (plus approx characters). The image option follows the same chosen pages with no cap (one JPEG per page in the range; I will note in the line that images multiply the payload, no blocking). Single code path so it covers every AI call. Tabs: no changes until he says whether he sees the strip; extras (Ctrl+T, Ctrl+1..9, reorder, right-click close others) only if he asks. Waiting for his go.
+EOF

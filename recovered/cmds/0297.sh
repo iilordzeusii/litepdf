@@ -1,0 +1,1 @@
+cd /tmp/scratch/tess/bt; cmake . -DCMAKE_CXX_FLAGS="-DUSE_STD_NAMESPACE -D_USE_MATH_DEFINES" >/dev/null 2>&1; nohup sh -c 'make -j2 tesseract' > /tmp/scratch/tess/bt.log 2>&1 & sleep 110; tail -2 /tmp/scratch/tess/bt.log | cut -c1-160; echo "11:27 tesseract needs -D_USE_MATH_DEFINES; building make tesseract in bt/" >> ~/NOTES_native.md

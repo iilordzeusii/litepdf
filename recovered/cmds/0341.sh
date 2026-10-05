@@ -1,0 +1,1 @@
+echo "11:42 AI transport (curl stdin cfg, both providers response parsing, headers) verified vs local mock only; real providers unverified. win build running" >> ~/NOTES_native.md; sleep 60; tail -4 /tmp/scratch/winbuild.log | cut -c1-200

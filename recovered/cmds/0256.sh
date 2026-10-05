@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src/pdf; grep -n "pub fn\|pub enum\|pub struct" page.rs | head -70; grep -n "pub enum Encryption" -A12 document.rs; grep -n "pub struct Permission" -B2 -A14 document.rs | head -30; grep -n "pub fn\|pub struct\|impl" graft_map.rs | head; grep -n "pub struct PdfRedactOptions" -B2 -A12 annotation.rs

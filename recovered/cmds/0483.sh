@@ -1,0 +1,1 @@
+tools browser_guidance search --query 'drive.google.com upload file' --json | head -c 1500; echo; tools cloud_browser_scheduler acquire --task-description 'Upload LitePDF installer to Google Drive' --mode read --json

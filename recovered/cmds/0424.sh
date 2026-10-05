@@ -1,0 +1,1 @@
+cd /tmp/scratch/ocrt; (env -i HOME=$HOME PATH=/usr/local/bin:/usr/bin:/bin:$HOME/.cargo/bin RUST_FONTCONFIG_DLOPEN=1 bash -c 'source ~/.cargo/env; cargo build --release' > /tmp/ocrt.log 2>&1 &) ; sleep 100; tail -5 /tmp/ocrt.log

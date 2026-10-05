@@ -1,0 +1,1 @@
+which qpdf mutool pdfunite gs 2>&1 | head; python3 -c "import pypdf;print('pypdf')" 2>&1 | tail -1; python3 -c "import fitz;print('fitz')" 2>&1|tail -1; ls -la /tmp/scratch/wt/scan.pdf /tmp/scratch/wt/book.pdf

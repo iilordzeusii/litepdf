@@ -1,0 +1,1 @@
+source /tmp/scratch/wenv.sh; cd /tmp; sed -i 's/let cap = 3.5 \* dt;/let cap = 10.0 * dt;/; s/(-dt \/ 0.05)/(-dt \/ 0.02)/' zt.rs; rustc -O zt.rs -o zt 2>&1|head -3; ./zt; cd /tmp/scratch/app; timeout 80 cargo build --release --target x86_64-pc-windows-gnu --bin uitest 2>&1 | grep -E '^error|Finished' -A8

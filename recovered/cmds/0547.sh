@@ -1,0 +1,1 @@
+grep -n "48, 320" -B3 /tmp/cases.txt | cut -c1-700 | head -12; grep -n "1.6 to 10\|discussions/876" /tmp/cases.txt | head -3; tools web_fetch --url https://github.com/mindee/doctr/discussions/876 | sed -n 5,60p | cut -c1-400

@@ -1,0 +1,1 @@
+tools browser_guidance search --query 'Google Drive upload file' 2>&1 | head -30; tools help cloud_browser.navigate cloud_browser.read-page cloud_browser.find cloud_browser.screenshot cloud_browser.click 2>&1 | grep -E "USAGE|^  tools" | head

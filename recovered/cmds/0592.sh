@@ -1,0 +1,1 @@
+cd /tmp; for p in 3-README.md 5-package.json; do echo "== $p"; tools github get-file-content --owner iilordzeusii --repo focus-forge --path $p --json | jq -r .content | head -80; done; tools github get-file-content --owner iilordzeusii --repo focus-forge --path 1-focus-forge-v1.6.2.zip --json > z.json 2>&1; ls -la z.json; head -c 300 z.json

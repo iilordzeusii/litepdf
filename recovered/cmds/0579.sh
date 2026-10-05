@@ -1,0 +1,1 @@
+cd ~/pdfapp; ls web | head; cat README.md | head -30 | cut -c1-200; cd /tmp/scratch/app/src; grep -n "fn render\|to_pixmap\|tex.insert\|fn texture\|zoom_t\|ctx.request_repaint\|fn thumb\|lazy\|visible" app.rs | head -40

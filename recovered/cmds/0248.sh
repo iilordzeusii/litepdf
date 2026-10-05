@@ -1,0 +1,4 @@
+echo "11:13 M0 screenshot made (/downloads/m0.png) and sent. Next: selection (stext), toolbar UI, etc." >> ~/NOTES_native.md
+tools agent_message send --to agent-01M2K1RFG71SJETW3996TFKAT0 --attachments /downloads/m0.png --message-stdin <<'EOF'
+M0 screenshot attached (/downloads/m0.png). It is a CPU software render of the native app's UI code (egui + MuPDF) on Linux, not a capture from Windows and not the GL window. It shows: title bar, a real PDF page rendered by MuPDF with its existing annotations (highlight, red lines, rectangle, form field, checkbox, free text), dark canvas, page shadow. It is the bare M0 skeleton only: no toolbar, sidebar, selection or tools yet. The Windows build of the same code (litepdf.exe on egui/eframe 0.34) compiles and links. Real sharpness/pinch/speed are still unverified until it runs on his PC. Next: selection via MuPDF text layout, then the proper toolbar/sidebar UI.
+EOF

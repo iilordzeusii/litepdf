@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; sed -n 236,247p app.rs | cut -c1-200; sed -n 1076,1225p app.rs | cut -c1-260; grep -n 'text_prefetch\|fn page_chars\|fn page_links\|self.text\b\|\.text\.get\|\.links\.get\|links.insert\|text.insert' app.rs | cut -c1-200

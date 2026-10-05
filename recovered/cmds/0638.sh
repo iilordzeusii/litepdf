@@ -1,0 +1,1 @@
+cd /tmp/scratch/app; source /tmp/scratch/wenv.sh; timeout 115 cargo build --release --target x86_64-pc-windows-gnu --bin litepdf 2>&1 | grep -E '^error|Finished' -A5 | head; ls -la target/x86_64-pc-windows-gnu/release/litepdf.exe

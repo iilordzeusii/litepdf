@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src/pdf; sed -n 280,296p page.rs; sed -n 355,392p page.rs; sed -n 436,450p page.rs; sed -n 505,540p page.rs; grep -n "pub fn load_pdf_page\|pub fn authenticate\|pub fn needs_password" document.rs ../document.rs

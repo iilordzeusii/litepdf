@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src; grep -n "to_text_page\|TextPageFlags" page.rs | head -4; grep -n "pub struct Quad" -A8 quad.rs; grep -n "pub struct TextPageFlags" -B2 -A12 text_page.rs | head -30; sed -n 586,600p text_page.rs

@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src/pdf; sed -n 66,135p page.rs; sed -n 870,912p page.rs; grep -n "pub fn extract_image\|pub fn images\|fn scale\|pub fn new_from_pixmap\|from_pixmap\|jpeg" page.rs ../image.rs | head

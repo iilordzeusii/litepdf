@@ -1,0 +1,1 @@
+tools agent_message send --to agent-01M2K1RFG71SJETW3996TFKAT0 --attachments /downloads/LitePDF-Setup.exe.part2 --message "Part 2 of 2: 15,110,112 bytes, sha256 d6c626d5a3a4f53d78770c7311a0cd3ac9aab76beb2a752ff6564c75bd9f840f. Join after part1; full file sha256 bb18aaa71ab1359950fb792b63e5dd60f4ecea85319df3e93bf32e50c877a0c4."

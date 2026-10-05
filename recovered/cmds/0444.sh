@@ -1,0 +1,1 @@
+source /tmp/scratch/wenv2.sh; export DISPLAY=:77; cd /tmp/scratch/wt; WINEDEBUG=err+module,warn+module timeout 60 $WINE ocrcli.exe cover.pdf o.pdf 2>&1 | grep -i -E "not found|err:|onnx" | head -10; ls $W/usr/lib/x86_64-linux-gnu/wine/x86_64-windows 2>/dev/null | grep -i -E "msvcp|vcruntime|d3d12|dxgi|dxcore|ucrt|api-ms" | head -20

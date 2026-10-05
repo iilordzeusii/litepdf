@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; sed -n 120,166p app.rs | cut -c1-260; grep -n 'struct Ch\b\|enum LinkT\|pub struct Ch' app.rs; grep -n 'Ch {' app.rs | head -3; sed -n 1,60p main.rs | cut -c1-200; grep -n 'Perf::new\|pub fn new' app.rs | head

@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; sed -n 7,22p app.rs | cut -c1-200; sed -n 541,556p app.rs | cut -c1-200; sed -n 171,243p app.rs | cut -c1-200; head -12 bin/ocrcli.rs; sed -n 90,110p extras.rs; sed -n 25,40p extras.rs

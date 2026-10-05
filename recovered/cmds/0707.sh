@@ -1,0 +1,1 @@
+source /tmp/scratch/wenv.sh; cd /tmp; rustc -O -o ez ez.rs 2>&1|head -3; ./ez; source /tmp/scratch/wenv2.sh; cd /tmp/scratch/wt; cp /tmp/scratch/app/target/x86_64-pc-windows-gnu/release/uitest.exe .; timeout 30 $WINE uitest.exe big.pdf p3.pdf p4.pdf 2>&1 | grep -E 'scroll|pinch|edit|tabs|settle'

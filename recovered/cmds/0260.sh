@@ -1,0 +1,2 @@
+cd /tmp/scratch; for f in o_merge o_re o_split_2 o_dec; do echo "$f: qpdf-check=$(qpdf --check $f.pdf 2>&1 | tail -1) pages=$(qpdf --show-npages $f.pdf)"; done; qpdf --show-encryption o_enc.pdf --password=userpw 2>&1 | head -4; pdftotext o_re.pdf - | head -3; ls -la t.pdf o_merge.pdf
+echo "11:16 ops.rs (merge, keep_pages/reorder/delete/split, encrypt AES256, decrypt) VERIFIED natively + independently with qpdf/pdftotext (host Linux). Test: shot/src/bin/optest.rs. Next: redact, annots, compress+image downsample, sign, OCR, UI toolbar." >> ~/NOTES_native.md

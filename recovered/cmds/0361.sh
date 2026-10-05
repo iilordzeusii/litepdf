@@ -1,0 +1,1 @@
+cd /tmp/scratch; ls oc tess/*.tsv 2>/dev/null | head; cd shot; ls target/release/ocrtest && T=$(ls /tmp/scratch/oc/*.tsv /tmp/scratch/tess/*.tsv 2>/dev/null|head -1); echo $T; ./target/release/ocrtest ../t.pdf $T /tmp/o_ocr.pdf 300; pdftotext -f 1 -l 1 /tmp/o_ocr.pdf - | head -5; pdftotext -f 1 -l 1 -layout /tmp/o_ocr.pdf - | head -3

@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; grep -n "Instant\|elapsed\|DirectML\|with_\|intra\|batch\|BATCH\|fn \|warm" ocr.rs | head -80; grep -n "Instant\|elapsed\|render\|add_text_layer\|page {} " extras.rs | head -30

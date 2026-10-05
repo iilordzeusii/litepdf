@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; M=~/.cargo/registry/src/*/mupdf-0.8.0; sed -n 1,40p $M/src/link.rs; sed -n 120,140p $M/src/document.rs; sed -n 285,300p $M/src/page.rs; sed -n 340,372p app.rs; grep -n "fn to_pdf" -A8 app.rs; grep -n "pub doc:\|doc: Option\|sizes:" app.rs | head -4; grep -n "fn outline\|outline" app.rs | head

@@ -1,0 +1,1 @@
+D="/tmp/scratch/wp/drive_c/users/sandbox/Application Data/LitePDF"; head -20 "$D/crash.log" 2>/dev/null | cut -c1-200; tail -5 "$D/ocr_child_stderr.log" | cut -c1-200; grep -n "recognize batch shape" /tmp/scratch/app/src/ocr.rs

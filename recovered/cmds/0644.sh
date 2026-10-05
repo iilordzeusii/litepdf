@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src; sed -n 1,60p context.rs; sed -n 170,200p context.rs; grep -n 'lock\|Mutex' device.rs pixmap.rs page.rs display_list.rs | head; cd /tmp/scratch/app/src; grep -n 'sync\b\|\.lock()' app.rs | head

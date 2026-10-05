@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/; grep -rn 'struct ScrollAnimation' -B3 -A25 egui-0.34*/src/ 2>/dev/null | head -50; grep -n 'smooth_scroll_delta' egui-0.34*/src/input_state/mod.rs | head -8; grep -n 'vsync' eframe-0.34*/src/epi.rs | head -5

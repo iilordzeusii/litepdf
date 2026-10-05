@@ -1,0 +1,1 @@
+which upx; cd /tmp/scratch; sed -i 's|SetCompressor /SOLID lzma|SetCompressor /SOLID lzma\nSetCompressorDictSize 64|' litepdf.nsi; NSISDIR=/tmp/scratch/nsis-root/usr/share/nsis /tmp/scratch/nsis-root/usr/bin/makensis -V1 litepdf.nsi 2>&1|tail -2; ls -la LitePDF-Setup.exe

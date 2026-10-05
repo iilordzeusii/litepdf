@@ -1,0 +1,1 @@
+cd /tmp/scratch/app; echo "11:42 form click hook added; starting windows build -> /tmp/scratch/winbuild.log" >> ~/NOTES_native.md; cat /tmp/scratch/wenv.sh | head -20; (source /tmp/scratch/wenv.sh; nohup cargo build --release --target x86_64-pc-windows-gnu > /tmp/scratch/winbuild.log 2>&1 &) ; sleep 30; tail -3 /tmp/scratch/winbuild.log

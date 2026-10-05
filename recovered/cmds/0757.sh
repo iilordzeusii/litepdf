@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; sed -n 297,336p /tmp/wb.cc; grep -n 'scroll_vel\|self.mrem\|self.notch\|self.sanim\b\|coast' app.rs | cut -c1-220; sed -n 438,470p app.rs | cut -c1-400; grep -n 'perf.log' app.rs | cut -c1-200 | head -5; sed -n 1395,1445p app.rs | cut -c1-330

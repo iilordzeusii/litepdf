@@ -1,0 +1,1 @@
+source /tmp/scratch/wenv2.sh; cd /tmp/scratch/wt; cp /tmp/scratch/app/target/x86_64-pc-windows-gnu/release/uitest.exe .; timeout 100 $WINE uitest.exe big.pdf p3.pdf p4.pdf 2>&1 | grep -E 'stress|WATCH|failed'; grep -E 'WATCHDOG|failed' "/tmp/scratch/wp/drive_c/users/sandbox/Application Data/LitePDF/perf.log" | head

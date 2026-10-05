@@ -1,0 +1,1 @@
+echo "11:48 wine: silent install ok (files, shortcut, reg), bundled tesseract OCR from install dir ok, uninstall removes dir" >> ~/NOTES_native.md; sleep 75; tail -2 /tmp/scratch/winbuild2.log | cut -c1-150

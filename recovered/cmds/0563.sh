@@ -1,0 +1,1 @@
+sleep 45; tail -2 /tmp/runall.out | cut -c1-150; pkill -f runall.sh; pkill -f ocrcli.exe; cd /tmp/scratch/app; source /tmp/scratch/wenv.sh >/dev/null 2>&1; cargo build --release --target x86_64-pc-windows-gnu 2>&1 | grep -E "^error" -A12 | head -40

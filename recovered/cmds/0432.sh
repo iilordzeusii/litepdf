@@ -1,0 +1,1 @@
+cd /tmp/scratch/ocrt; LD=/tmp/scratch/ocrdl/lin/onnxruntime/capi/libonnxruntime.so.1.22.1; for f in cover samp; do ./target/release/ocrt /tmp/scratch/$f.raw /tmp/scratch/ocrdl $LD 2>&1 | grep -v "^\x1b" | tail -2 | cut -c1-900; done

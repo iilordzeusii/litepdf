@@ -1,0 +1,1 @@
+D="/tmp/scratch/wp/drive_c/users/sandbox/Application Data/LitePDF"; cat "$D/crash.log" | head -30; echo ----; tail -50 "$D/ocr.log"; echo ---; cat "$D/ocr_child_stderr.log" | tail -15; grep -n -i "link" /tmp/scratch/app/src/*.rs | head -20

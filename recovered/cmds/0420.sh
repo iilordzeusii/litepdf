@@ -1,0 +1,9 @@
+tools agent_message send --to agent-01M2K1RFG71SJETW3996TFKAT0 --message-stdin <<'EOF'
+Re certificate signing: it is already in the current build (Tools > "Sign with certificate...", .pfx/.p12 + password, PAdES signature via the underskrift crate). Nothing new to build.
+- Cost: no new MB or RAM for this ask, it is already counted in the 15 MB exe. It only does work when he clicks sign (one file read + a hash and RSA signature, tens of ms, a few MB of RAM, freed after). Practically invisible. No extra install files.
+- Network: none. Signing is offline. No timestamp server is used, so the signature has the signing time from his PC clock, not a trusted timestamp. A trusted timestamp (RFC 3161) would need a network call to a TSA; can be added as an option later if he wants it.
+- Verified here: the signer runs and writes a signed PDF (I produced o_signed.pdf with a test cert). I have NOT yet confirmed it shows as valid in an independent validator (Adobe, pyHanko, etc.); I can run an independent check in this build if wanted. Treat "opens as valid in Adobe" as unverified.
+- Risks: (1) a self-signed or non-CA cert shows as "signer unknown / not trusted" in Adobe; the signature is still cryptographically intact. Legally recognised signing (e.g. Indian DSC) needs a CA-issued cert, often on a USB token, and token (PKCS#11) signing is NOT supported, only .pfx files. (2) Editing the PDF after signing invalidates the signature; the app should sign last. (3) Visible signature appearance is basic. 
+Continuing the OCR/PaddleOCR build meanwhile (models and ONNX Runtime downloaded, Rust pipeline written, now compiling).
+EOF
+cd /tmp/scratch/shot; env -i HOME=$HOME PATH=/usr/local/bin:/usr/bin:/bin:$HOME/.cargo/bin bash -c 'source ~/.cargo/env; cargo build --release --bin ocr2test 2>&1 | grep -B2 -A12 "fontconfig" | head -40'

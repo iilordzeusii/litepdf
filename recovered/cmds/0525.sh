@@ -1,0 +1,1 @@
+cd /tmp/scratch; grep -n "settings_path" -A4 app/src/extras.rs | head -14; grep -n "fn ocr_log" -A6 app/src/extras.rs; cat litepdf.nsi; grep -n "version\|About" app/src/app.rs app/Cargo.toml | head; ls /tmp/scratch/wt/inst

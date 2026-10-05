@@ -1,0 +1,1 @@
+tools web_search --query "pdf.js page.render canvas viewport outputScale devicePixelRatio worker getDocument examples" --include-domain mozilla.github.io,github.com --limit 5 --json | jq -r '.[]|[.url,(.highlights[0]//""|.[0:200])]|@tsv'

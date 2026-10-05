@@ -1,0 +1,2 @@
+cd /tmp/scratch/shot; source ~/.cargo/env; RUST_FONTCONFIG_DLOPEN=1 LIBCLANG_PATH=/usr/local/lib/python3.10/dist-packages/clang/native nohup cargo build --release > /tmp/scratch/h1.log 2>&1 &
+echo "10:07 host shot build needs RUST_FONTCONFIG_DLOPEN=1 too." >> ~/NOTES_native.md; sleep 100; grep -E "^error|Finished" -A4 /tmp/scratch/h1.log | head -8 | cut -c1-200; tail -1 /tmp/scratch/h1.log | cut -c1-100

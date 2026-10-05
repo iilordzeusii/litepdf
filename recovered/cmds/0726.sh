@@ -1,0 +1,1 @@
+source /tmp/scratch/wenv.sh; cd /tmp/scratch/app && timeout 110 cargo build --release --target x86_64-pc-windows-gnu --bin rendcli 2>&1 | tail -3; source /tmp/scratch/wenv2.sh; cd /tmp/scratch/wt; cp /tmp/scratch/app/target/x86_64-pc-windows-gnu/release/rendcli.exe .; timeout 100 $WINE rendcli.exe vec.pdf 2>&1 | grep -v fixme | tail -12

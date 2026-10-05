@@ -1,0 +1,2 @@
+echo "10:20 egui_software_backend 0.0.3 needs egui 0.34 -> bump app (eframe/egui) from 0.31 to 0.34 in /tmp/scratch/app and shot; fix API diffs (Frame::none -> Frame::NONE, etc.), set shot Cargo egui=0.34, rebuild host+windows. Windows exe builds fine on 0.31 meanwhile." >> ~/NOTES_native.md
+sed -i 's/egui = "0.31"/egui = "0.34"/' /tmp/scratch/shot/Cargo.toml; sed -i 's/egui = "0.31"/egui = "0.34"/; s/eframe = { version = "0.31"/eframe = { version = "0.34"/' /tmp/scratch/app/Cargo.toml; grep -n "egui\|eframe" /tmp/scratch/app/Cargo.toml

@@ -1,0 +1,1 @@
+cd /tmp/scratch/wt; source /tmp/scratch/wenv2.sh; rm -f "/tmp/scratch/wp/drive_c/users/sandbox/Application Data/LitePDF/perf.log"; timeout 100 $WINE uitest.exe big.pdf p3.pdf p4.pdf 2>&1 | grep -E 'edit|after refresh|scroll|pinch'; head -c 1800 "/tmp/scratch/wp/drive_c/users/sandbox/Application Data/LitePDF/perf.log"

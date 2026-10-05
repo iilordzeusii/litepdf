@@ -1,0 +1,1 @@
+cd /tmp; curl -sL "https://chromium.googlesource.com/chromium/src/+/HEAD/cc/animation/scroll_offset_animation_curve.cc?format=TEXT" | base64 -d > soac.cc; sed -n 60,110p soac.cc; sed -n 145,420p soac.cc

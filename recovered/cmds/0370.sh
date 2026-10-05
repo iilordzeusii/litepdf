@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src/pdf; grep -n "pub fn" annotation.rs | grep -i "default_app\|da\b\|contents\|font\|text\|border\|rect\|line_ending\|set_color\|color\|delete\|opacity\|quad_points\|ink" | head -40; sed -n 222,262p /tmp/scratch/app/src/ops.rs; sed -n 283,296p page.rs

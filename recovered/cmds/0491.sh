@@ -1,0 +1,1 @@
+cd /tmp/scratch; rm -f /tmp/p1 /downloads/LitePDF-Setup.exe.part*; head -c 16000000 LitePDF-Setup.exe > /downloads/LitePDF-Setup.exe.part1; tail -c +16000001 LitePDF-Setup.exe > /downloads/LitePDF-Setup.exe.part2; cat /downloads/LitePDF-Setup.exe.part1 /downloads/LitePDF-Setup.exe.part2 | sha256sum; ls -l /downloads/LitePDF-Setup.exe.part*

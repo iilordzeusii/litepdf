@@ -1,0 +1,1 @@
+cd /tmp/scratch/tess/bl; cmake . -DHAVE_FMEMOPEN=0 -DHAVE_FMEMOPEN:INTERNAL=0 2>&1 | tail -2; grep -n FMEMOPEN config_auto.h 2>/dev/null | head -3; nohup sh -c 'make -j2 && make install' > /tmp/scratch/tess/bl.log 2>&1 & sleep 100; tail -3 /tmp/scratch/tess/bl.log | cut -c1-200

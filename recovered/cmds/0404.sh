@@ -1,0 +1,8 @@
+cp /tmp/scratch/LitePDF-Setup.exe /downloads/; ls -la /downloads/LitePDF-Setup.exe; echo "18:47 installer: upgrade-in-place (reads InstallLocation, renames running exe)" >> ~/NOTES_native.md
+tools agent_message send --to agent-01M2K1RFG71SJETW3996TFKAT0 --attachments /downloads/LitePDF-Setup.exe --message-stdin <<'EOF'
+Installer upgrade question. Read from the script (v1 of the installer script), then changed and run under Wine:
+- Before: fixed install folder %LOCALAPPDATA%\Programs\LitePDF, same shortcut names, one fixed uninstall entry, so a second run overwrote in place, no duplicate install or shortcuts. But if litepdf.exe was running, Windows would refuse to overwrite it (installer would show a retry/abort prompt).
+- Now (attached, same app as the last build, 20.5 MB): the installer remembers the install folder in its uninstall entry and reuses it, so an upgrade always goes to the same place even if a different folder was once chosen. If the exe is running it renames it to litepdf.exe.old (Windows allows renaming a running exe), writes the new one, and deletes the old one (at reboot if still locked). The old running window keeps working until he closes it, the new version starts next launch. It does not kill the app, so no unsaved work is lost.
+- Settings and the AI keys live in %APPDATA%\LitePDF and the installer and uninstaller never touch that folder, so they survive upgrade and uninstall (read from script). The uninstaller removes the install folder, shortcuts and registry entries.
+- Run under Wine: installed twice over the same folder, got one set of files, one uninstall entry, one shortcut, and uninstall removed the folder. NOT run: the upgrade while the exe is actually running, on real Windows.
+EOF

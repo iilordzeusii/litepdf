@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; sed -n 556,640p app.rs | cut -c1-330; grep -n 'set_doc\|self.tex\|\.thumbs\|self.open(\|self.doc = \|pending' app.rs extras.rs ops.rs | cut -c1-200 | grep -vn '^app.rs:\(2[3-9]\|[3-9]\)[0-9]:' | head -60

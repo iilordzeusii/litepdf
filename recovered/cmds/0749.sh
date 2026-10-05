@@ -1,0 +1,2 @@
+cd /tmp/scratch/app/src; sed -i 's/slope: 2.0, applied: 0.0, dscale/slope: 0.0, applied: 0.0, dscale/; s/tp_tau: 0.5,/tp_tau: 1.0,/; s/(build b10)/(build b11)/' app.rs; sed -i 's/b10/b11/' ../../perf.log 2>/dev/null; grep -n 'slope: 0.0\|tp_tau: 1.0\|build b1' app.rs | cut -c1-120; sed -n 1388,1394p app.rs | cut -c1-250; grep -rn 'b10' *.rs | cut -c1-120 | head
+source /tmp/scratch/wenv.sh; cd /tmp/scratch/app && timeout 118 cargo build --release --target x86_64-pc-windows-gnu --bin litepdf 2>&1 | grep -E '^error|Finished' -A6

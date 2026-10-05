@@ -1,0 +1,1 @@
+for p in "" . src; do echo "== '$p'"; tools github get-file-content --owner iilordzeusii --repo focus-forge --path "$p" --json 2>&1| head -c 800; done; tools github get-repo --owner iilordzeusii --repo focus-forge --json

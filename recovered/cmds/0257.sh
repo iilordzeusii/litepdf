@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src/pdf; grep -n "pub fn" object.rs | grep -E "array|dict|resolve|is_|as_|get_|len|kids|push|insert" | head -50; sed -n 205,215p ../pdf/page.rs; sed -n 15,25p graft_map.rs; sed -n 520,535p document.rs; grep -n "fn new_graft_map" -B2 -A8 document.rs | head -14

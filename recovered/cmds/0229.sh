@@ -1,0 +1,1 @@
+echo "10:10 app split: /tmp/scratch/app/src/app.rs (egui-only UI: App::open, App::ui) + main.rs eframe wrapper; windows build OK. Next: shot bin in /tmp/scratch/shot uses #[path] app.rs + egui_software_backend." >> ~/NOTES_native.md; grep -E "^error|Finished" -A4 /tmp/scratch/h1.log | head -8 | cut -c1-200; tail -1 /tmp/scratch/h1.log | cut -c1-100

@@ -1,0 +1,1 @@
+cd /tmp/scratch; sz=$(stat -c %s LitePDF-Setup.exe); h=$(sha256sum LitePDF-Setup.exe | cut -d' ' -f1); echo $sz $h; split -b 16000000 -d -a 1 LitePDF-Setup.exe /downloads/LitePDF-Setup.exe.part; cd /downloads; mv LitePDF-Setup.exe.part0 LitePDF-Setup.exe.part1; mv LitePDF-Setup.exe.part1 /tmp/p1 2>/dev/null; ls -la /downloads/LitePDF-Setup.exe.part* /tmp/p1

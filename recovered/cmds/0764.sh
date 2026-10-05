@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/; grep -n 'LineDelta' -B2 -A12 egui-winit-0.31.1/src/lib.rs | sed -n 1,50p; grep -n 'MouseWheel' -B3 -A14 winit-0.30.13/src/platform_impl/windows/event_loop.rs | sed -n 1,50p; grep -n 'egui' /tmp/scratch/app/Cargo.toml

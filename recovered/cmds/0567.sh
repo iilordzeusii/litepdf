@@ -1,0 +1,3 @@
+free -m | head -2; cat /sys/fs/cgroup/memory.max 2>/dev/null; tools agent_message send --help >/dev/null 2>&1; tools agent_message send --to agent-01M2K1RFG71SJETW3996TFKAT0 --message-stdin <<'EOF'
+Status: fixed-shape GPU sessions, per-stage timing, GPU names, CPU benchmark/watchdog, batch halving on GPU failure, build stamp (title shows "build b3") are coded and compile. Link clicks kept. CPU-proxy tests so far: correct output with fixed sessions (2449 vs 2438-2484 words on the 3 test pages, 0 failed), timing lines work; I am now sizing the big batches (just hit a memory kill in my sandbox testing 64/32/16 rows on CPU, checking whether it is just the sandbox) before building the installer. Not blocked; GPU speed stays unverified until his RTX 3050 run.
+EOF

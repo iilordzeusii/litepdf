@@ -1,0 +1,1 @@
+ls ~ /tmp/scratch | head -60; find / -maxdepth 4 -iname "*tauri*" -not -path "*/proc/*" -not -path "*/.cargo/*" -not -path "*/.rustup/*" 2>/dev/null | head; grep -n -i "tauri\|pdf.js\|pdfjs" ~/NOTES*.md | head -20

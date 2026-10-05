@@ -1,0 +1,1 @@
+cd /tmp; g(){ curl -sL "https://chromium.googlesource.com/chromium/src/+/HEAD/$1?format=TEXT" | base64 -d; }; g chrome/browser/resources/pdf/viewport.ts > vp.ts; wc -l vp.ts; grep -n -i 'wheel\|pinch\|zoom_factor\|ZOOM\|zoomFactor\|setZoom\|animat\|smooth' vp.ts | head -80

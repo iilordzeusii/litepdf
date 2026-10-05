@@ -1,0 +1,1 @@
+cd /tmp/scratch; mkdir -p ocrdl && cd ocrdl; curl -sL -m 30 https://huggingface.co/Kreuzberg/paddleocr-onnx-models/raw/main/README.md | head -80; curl -sL -m 30 https://huggingface.co/api/models/Kreuzberg/paddleocr-onnx-models | python3 -c "import json,sys; d=json.load(sys.stdin); print([s['rfilename'] for s in d['siblings']])"

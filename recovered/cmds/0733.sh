@@ -1,0 +1,1 @@
+cd /tmp; g(){ curl -sL "https://chromium.googlesource.com/chromium/src/+/HEAD/$1?format=TEXT" | base64 -d; }; g ui/events/blink/input_handler_proxy.cc > ihp.cc; wc -l ihp.cc; grep -n -i 'precise\|AnimateScroll\|smooth\|kScrollByPage\|fling' ihp.cc | head -50

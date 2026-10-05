@@ -1,0 +1,1 @@
+cd /tmp/scratch; echo "11:37 form fill engine verified (text set, checkbox toggle via pypdf)" >> ~/NOTES_native.md; cat sg/src/main.rs | head -80; cat sg/Cargo.toml; cat shot/src/bin/ocrtest.rs | head -60; grep -n "OcrWord" app/src/ops.rs | head -3; cat app/Cargo.toml

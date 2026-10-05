@@ -1,0 +1,1 @@
+tools web_fetch --url https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html --json | jq -r '.[0].content // .' | grep -n -i -A14 "Performance Tuning" | cut -c1-400 | head -50

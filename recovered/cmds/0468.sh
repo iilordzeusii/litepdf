@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src; grep -n "pub fn \(as_int\|get_dict\|dict_get\|is_int\|as_name\)" pdf/object.rs | head; grep -n "pub struct PageImageInfo\|pub struct ImageInfo" -A14 pdf/*.rs | head -30

@@ -1,0 +1,1 @@
+cd /tmp/scratch/wt; source /tmp/scratch/wenv2.sh; cp /tmp/scratch/app/target/x86_64-pc-windows-gnu/release/uitest.exe .; timeout 100 $WINE uitest.exe big.pdf p3.pdf p4.pdf 2>&1 | grep -v fixme | tail -25

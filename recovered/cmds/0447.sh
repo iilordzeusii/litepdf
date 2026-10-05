@@ -1,0 +1,1 @@
+source /tmp/scratch/wenv2.sh; export DISPLAY=:77; cd /tmp/scratch/wt; cp /tmp/scratch/wineroot/usr/x86_64-w64-mingw32/lib/zlib1.dll .; WINEDEBUG=err+module timeout 100 $WINE ocrcli.exe cover.pdf o.pdf 2>&1 | grep -v explorer | head -8

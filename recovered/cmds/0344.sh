@@ -1,0 +1,1 @@
+echo "11:44 windows exe built 15.0MB /tmp/scratch/app/target/x86_64-pc-windows-gnu/release/litepdf.exe (unrun)" >> ~/NOTES_native.md; ls /tmp/scratch/*.nsi /tmp/scratch/nsis* 2>/dev/null | head; find /tmp/scratch ~ -name "*.nsi" 2>/dev/null | head

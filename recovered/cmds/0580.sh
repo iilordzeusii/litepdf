@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; sed -n 98,130p app.rs | cut -c1-330; sed -n 352,385p app.rs | cut -c1-360; grep -n "update\|fn ui\|raw_input\|repaint" app.rs main.rs | head -20; grep -n "opt-level\|lto\|codegen\|panic\|\[profile" -A1 ../Cargo.toml | head

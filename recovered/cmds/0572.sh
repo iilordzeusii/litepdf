@@ -1,0 +1,1 @@
+grep -n -i "memory_pattern\|parallel_exec\|DirectML\|batch\|DML" ~/NOTES_native.md | head -30; ls /tmp/scratch/app/.git 2>/dev/null | head -2; ls /tmp/scratch | head -30; ls /tmp/scratch/*.bak /tmp/scratch/app/src/*.bak 2>/dev/null

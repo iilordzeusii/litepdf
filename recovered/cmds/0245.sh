@@ -1,0 +1,1 @@
+cd /tmp/scratch; echo "11:12 egui 0.34 both builds OK (app windows + shot host). shot usage: ./shot/target/release/shot t.pdf m0.ppm 1.0" >> ~/NOTES_native.md; ./shot/target/release/shot t.pdf m0.ppm 1.0 2>&1 | tail -3; convert m0.ppm m0.png && ls -la m0.png

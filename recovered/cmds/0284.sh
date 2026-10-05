@@ -1,0 +1,4 @@
+tools agent_message send --to agent-01M2K1RFG71SJETW3996TFKAT0 --message-stdin <<'EOF'
+Signing proof (riskiest item) PASSED in scratch: pure-Rust PAdES signing (crate underskrift 0.1.4, PKCS#12 key) signed my test PDF; independent check with pyHanko: signature intact=True, valid=True, covers the entire file; flipping one byte afterwards makes it intact=False (tamper detected). Only "untrusted" because my test cert is self-signed (expected; a real cert would chain). So no Go helper needed; signing can be built into the Rust exe. Ran on Linux host; Windows build of this crate not tried yet (it is pure Rust so low risk). Next: OCR proof (Tesseract static vs pure-Rust ocrs), then the UI.
+EOF
+which cmake ninja make; cargo search ocrs 2>&1 | head -3; source ~/.cargo/env; cargo search tesseract 2>&1 | head -5

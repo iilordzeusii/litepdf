@@ -1,0 +1,1 @@
+cd /tmp/ff; grep -c -i 'pdfjs' src/main.ts; sed -n 158p src/main.ts | cut -c1-500; grep -n 'pdf-frame' src/style.css; grep -n -i -E 'webview|pdf' src-tauri/src/lib.rs src-tauri/Cargo.toml | head; cd /tmp; L=$(jq -r .lease_id lease.json); tools cloud_browser_scheduler release --lease-id $L

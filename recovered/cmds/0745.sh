@@ -1,0 +1,2 @@
+cd /tmp; B=https://chromium.googlesource.com/chromium/src/+/HEAD; for p in ui/events/blink/web_input_event_builders_win.cc; do curl -sL "$B/$p?format=TEXT" | base64 -d > wb.cc; done; wc -l wb.cc; grep -n -i -E 'precise|momentum|phase|kScrollbarPixelsPerLine|WHEEL_DELTA|delta' wb.cc | head -60
+curl -sL "$B/cc/input/input_handler.cc?format=TEXT" | base64 -d > ih.cc; grep -n -i -E 'ShouldAnimateScroll|precise|kInverse|IsPrecise|ScrollGranularity|kScrollByPixel|prefers|animate' ih.cc | head -50

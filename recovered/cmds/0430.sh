@@ -1,0 +1,3 @@
+cd /tmp/scratch/app/src; sed -i 's/let nclass = self.dict.len() + 1;/let nclass = self.dict.len();/; s/self.dict\[bi2 - 1\]/self.dict[bi2]/; s/but dictionary has {}", self.dict.len()/but dictionary has {}", self.dict.len()/' ocr.rs; grep -c '^ $' /tmp/scratch/ocrdl/dict.txt
+cd /tmp/scratch/ocrt; env -i HOME=$HOME PATH=/usr/local/bin:/usr/bin:/bin:$HOME/.cargo/bin bash -c 'source ~/.cargo/env; cargo build --release 2>&1 | grep -E "^error|Finished"'
+export LD=/tmp/scratch/ocrdl/lin/onnxruntime/capi/libonnxruntime.so.1.22.1; for f in cover samp; do ./target/release/ocrt /tmp/scratch/$f.raw /tmp/scratch/ocrdl $LD 2>&1 | grep -v "^\x1b" | head -8; done

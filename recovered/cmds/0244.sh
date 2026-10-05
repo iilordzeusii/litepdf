@@ -1,0 +1,1 @@
+cd /tmp/scratch/shot; source ~/.cargo/env; (RUST_FONTCONFIG_DLOPEN=1 BINDGEN_EXTRA_CLANG_ARGS="-I/usr/lib/gcc/x86_64-linux-gnu/11/include" LIBCLANG_PATH=/usr/local/lib/python3.10/dist-packages/clang/native timeout 110 cargo build --release 2>&1 | grep -E "^error|Finished" -A9 | head -30 | cut -c1-180); grep -E "^error|Finished" -A6 /tmp/scratch/a2.log | head

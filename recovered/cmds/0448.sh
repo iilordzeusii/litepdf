@@ -1,0 +1,1 @@
+source /tmp/scratch/wenv2.sh; export DISPLAY=:77; cd /tmp/scratch/wt; export APPDATA=/tmp/scratch/wt/appdata; timeout 110 $WINE ocrcli.exe cover.pdf cover_o.pdf 2>&1 | grep -v fixme | tail -4; find /tmp/scratch/wp /tmp/scratch/wt -name ocr.log | xargs -I{} tail -8 {}

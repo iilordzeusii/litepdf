@@ -1,0 +1,1 @@
+echo "11:50 OCR spacing fixed (Cour font, 0.6 width; clean scan gives 'Page one. Confidential account...' page size unchanged). rebuilding win exe+setup" >> ~/NOTES_native.md; cd /tmp/scratch/app; source /tmp/scratch/wenv.sh; timeout 110 cargo build --release --target x86_64-pc-windows-gnu 2>&1 | grep -E "^error|Finished"

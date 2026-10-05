@@ -1,0 +1,1 @@
+cd /tmp/scratch/app; grep -n mupdf Cargo.toml; d=$(ls -d ~/.cargo/registry/src/*/mupdf-0* | head -3); echo $d; for x in $d; do grep -n 'pub fn new_with_rect\|pub fn from_pixmap\|pub fn from_bytes\|pub fn from_buffer\|pub fn write_to_bytes\|pub fn save\|pub fn write_to\|pub fn clear_with\|pub fn run\b\|pub fn run(' -r $x/src | head -30; done

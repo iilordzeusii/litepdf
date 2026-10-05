@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; grep -n "to_text_page\|TextPageFlags\|write_bmp\|exe_dir" *.rs | head -20; grep -n "ocr\|tess" /tmp/scratch/litepdf.nsi | head -20; ls /tmp/scratch/stage /tmp/scratch/stage/ocr 2>/dev/null | head -20

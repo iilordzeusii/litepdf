@@ -1,0 +1,1 @@
+cd /tmp/scratch/shot; source ~/.cargo/env; cargo tree 2>/dev/null | grep -E "^├── egui|egui v|epaint v" | sort -u | head; grep -A3 '^\[dependencies.egui\]' ~/.cargo/registry/src/*/egui_software_backend-0.0.3/Cargo.toml

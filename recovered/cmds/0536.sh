@@ -1,0 +1,1 @@
+cd /tmp; tools web_fetch --url https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html > dml.txt; wc -c dml.txt; grep -n -i -A12 "Performance Tuning" dml.txt | cut -c1-500 | head -40; tools web_fetch --url https://github.com/microsoft/onnxruntime/issues/20983 > i20983.txt; grep -n -i -B2 -A10 "turns out" i20983.txt | cut -c1-500 | head -40

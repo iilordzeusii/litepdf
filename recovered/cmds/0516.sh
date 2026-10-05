@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; M=$(echo ~/.cargo/registry/src/*/mupdf-0.8.0); grep -n "enum DestinationKind" -A22 $M/src/*.rs | head -40; grep -n "text.clear()\|text.remove\|fn invalidate\|fn offsets" app.rs | head; grep -n "^use\|nowin" app.rs extras.rs | head -20

@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src/pdf; ls; grep -n "pub fn" page.rs | head -50; grep -n "pub fn\|pub enum" widget.rs | head -40; echo "11:36 app.rs v2 compiles+renders toolbar/thumbs/annots (/downloads/m2a.png). next: forms, menus, AI, sign, OCR" >> ~/NOTES_native.md

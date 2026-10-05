@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; sed -n 965,1075p app.rs | cut -c1-230; grep -n 'fn poll_render\|fn put_tile\|fn build_requests\|fn paint_page\|fn tile_grid\|fn evict\|Res::\|perf\.' app.rs | cut -c1-160 | grep -v '^9[6-9][0-9]\|^10[0-7]'

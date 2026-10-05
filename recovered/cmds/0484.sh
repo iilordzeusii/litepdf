@@ -1,0 +1,1 @@
+L=L-krn-ybiqpmxzsk3fzkvlitv7axtq2y; tools cloud_browser navigate --lease-id $L --tab-id 1 --url https://drive.google.com/drive/my-drive --wait-until load --json; tools cloud_browser read-page --lease-id $L --tab-id 1 --format text 2>&1 | head -30

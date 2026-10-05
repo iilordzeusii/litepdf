@@ -1,0 +1,2 @@
+cd /tmp/scratch; cp app/target/x86_64-pc-windows-gnu/release/litepdf.exe stage/; NSISDIR=/tmp/scratch/nsis-root/usr/share/nsis /tmp/scratch/nsis-root/usr/bin/makensis -V1 litepdf.nsi | tail -1; cp stage/litepdf.exe /downloads/; cp LitePDF-Setup.exe /downloads/; ls -la /downloads/*.exe; file stage/litepdf.exe | cut -c1-80
+source wenv2.sh; export DISPLAY=:77; timeout 100 $WINE LitePDF-Setup.exe /S /D='C:\LitePDFtest2' 2>&1|tail -1; sleep 2; ls wp/drive_c/LitePDFtest2 wp/drive_c/LitePDFtest2/ocr; echo "18:58 final build packaged" >> ~/NOTES_native.md

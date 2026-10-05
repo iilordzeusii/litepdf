@@ -1,0 +1,2 @@
+source /tmp/scratch/wenv2.sh; export DISPLAY=:77; pgrep Xvfb >/dev/null || (Xvfb :77 -screen 0 1280x800x24 &>/dev/null &); cd /tmp/scratch/wt; cp /tmp/scratch/cover.pdf /tmp/scratch/samp.pdf .; export APPDATA=/tmp/scratch/wt/appdata
+timeout 100 $WINE ocrcli.exe cover.pdf cover_o.pdf 2>&1 | tail -5; echo ---; timeout 100 $WINE ocrcli.exe cover_o.pdf x.pdf 2>&1 | tail -2; find /tmp/scratch/wp -name ocr.log | head -2 | xargs -I{} tail -12 {}

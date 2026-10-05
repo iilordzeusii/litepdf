@@ -1,0 +1,1 @@
+cd /tmp/scratch/zig; sed -i 's/ -lwindows\*)/ -lWs2_32) a+=("-lws2_32");;\n -lwindows*)/' zcc; grep -n "Ws2" zcc; cd /tmp/scratch/tess/bt; (timeout 100 make tesseract 2>&1 | tail -3 | cut -c1-200); ls -la bin/tesseract.exe

@@ -1,0 +1,1 @@
+tools github search-code --query 'pdf repo:iilordzeusii/focus-forge' --limit 50 --json | jq -r '.items[]|[.path,.html_url]|@tsv'; for p in README.md package.json src-tauri/Cargo.toml src-tauri/tauri.conf.json; do echo "== $p"; tools github get-file-content --owner iilordzeusii --repo focus-forge --path $p --json | jq -r .content | head -60; done

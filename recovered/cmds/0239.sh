@@ -1,0 +1,1 @@
+cd /tmp/scratch; for v in 0.0.1 0.0.2; do curl -s https://crates.io/api/v1/crates/egui_software_backend/$v/dependencies -A x | python3 -c "import sys,json;print('$v',[ (d['crate_id'],d['req']) for d in json.load(sys.stdin)['dependencies'] if d['crate_id']=='egui'])"; done

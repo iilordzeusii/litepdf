@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; grep -n 'settle\|sharp\|fn \|tile_missing\|pub fn tile' bin/uitest.rs | cut -c1-170 | head -40; grep -n 'pub fn sharp\|pub fn blank\|pub fn tile_count\|pub fn test_' app.rs | head

@@ -1,0 +1,1 @@
+source /tmp/scratch/wenv2.sh; cd /tmp/scratch/wt; timeout 110 $WINE uitest.exe big.pdf p3.pdf p4.pdf 2>&1 | grep -v fixme | tail -40; head -c 3000 "/tmp/scratch/wp/drive_c/users/sandbox/Application Data/LitePDF/perf.log"

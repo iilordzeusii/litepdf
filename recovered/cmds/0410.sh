@@ -1,0 +1,1 @@
+cd /tmp/scratch/app 2>/dev/null && ls && cat Cargo.toml && wc -l src/*.rs && grep -n "tesseract\|ocr" -i src/*.rs | head -60; ls ~/.cargo/registry 2>/dev/null | head; cat /tmp/scratch/wenv.sh | head -30

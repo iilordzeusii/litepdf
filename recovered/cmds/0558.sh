@@ -1,0 +1,1 @@
+cd /tmp/scratch/app; sed -i 's|format!("{}{} - LitePDF", name, if self.dirty { " \*" } else { "" })|format!("{}{} - LitePDF (build b3)", name, if self.dirty { " *" } else { "" })|' src/app.rs; grep -c "build b3" src/app.rs; source /tmp/scratch/wenv.sh >/dev/null 2>&1; cargo build --release --target x86_64-pc-windows-gnu 2>&1 | grep -E "^error" -A12 | head -60

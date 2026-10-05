@@ -1,0 +1,1 @@
+sed -n 50,75p ~/.cargo/registry/src/*/mupdf-0.8.0/src/color.rs; sed -n 8,20p ~/.cargo/registry/src/*/mupdf-0.8.0/src/pdf/mod.rs; grep -n "pub use" ~/.cargo/registry/src/*/mupdf-0.8.0/src/lib.rs | head -30

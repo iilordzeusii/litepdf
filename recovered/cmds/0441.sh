@@ -1,0 +1,1 @@
+source /tmp/scratch/wenv2.sh; export DISPLAY=:77; cd /tmp/scratch/wt; timeout 100 $WINE ocrcli.exe cover.pdf cover_o.pdf; echo "exit $?"; WINEDEBUG=err+all timeout 60 $WINE ocrcli.exe cover.pdf cover_o.pdf 2>&1 | head -20

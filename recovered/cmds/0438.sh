@@ -1,0 +1,1 @@
+cd /tmp/scratch/app; source /tmp/scratch/wenv.sh >/dev/null 2>&1; cargo build --release --target x86_64-pc-windows-gnu 2>&1 | grep -E "^error|Finished" -A6 | head -50; ls -la target/x86_64-pc-windows-gnu/release/litepdf.exe

@@ -1,0 +1,21 @@
+cat > /tmp/r2.txt <<'EOF'
+New build "b3" (title bar shows "(build b3)", ocr.log starts with "LitePDF build 2026-10-04 fixed-shape GPU sessions (b3)"). Installer LitePDF-Setup.exe 31,102,394 bytes, SHA-256 bb1622f6e7f2119680e828fce2eda36107489363be4c472e09e3106cc31ee098. Installed litepdf.exe is 15,354,368 bytes, SHA-256 1194a55dd567dad4b96ed071ac6da39a961f34fcf12d9f67460a73bdddf29b59. Part1 (this message) 16,000,000 bytes sha256 b006220115ce141583c8b967ff625b5d5cac5db70a799b1f7fbfcab5fb9f1dd6; part2 (next message) 15,102,394 bytes sha256 8998ee8d5ba5371aa034fea6ff98cf4dba78ee450d046acb8470a9b701f1a03c. Joined hash verified.
+
+WHAT CHANGED
+- Real fixed shapes for DirectML: sessions are created with the model's free dimensions pinned (DynamicDimension.* overrides, the fix in the ORT DirectML docs). 1 detector session per orientation (canvas long side 1216, short side 832; no 2x upscale, never enlarged) plus 3 recognizer sessions, created lazily on first use: 320 px wide x64 lines per call, 800 px x32, 1280 px x8. Typical page now needs ~1 detector call + 2-4 recognizer calls instead of ~12.
+- Batch sizes are chosen for RTX 3050 6 GB with large headroom (activations for these batches are well under 1 GB by my estimate; not measured on the GPU). If any GPU recognizer batch fails (e.g. out of video memory), the batch is halved automatically, a smaller session replaces it and stays, and ocr.log says so. Tested with a forced failure here: 64 -> 32 -> 16, same 421 words.
+- ocr.log now has: build id, display adapter names (from the registry) and CPU thread count, GPU batch sizes, "created ... session ... in N ms" per shape, and for every page "page N timing: render, det prep, det run, boxes, rec prep, rec run (calls, rows used of rows run), decode, session creation" plus memory per page.
+- Speed watchdog: after 6 GPU pages, if pages 3-6 average over 2.5 s, it times the CPU on the same page, logs "CPU benchmark: X s for the same page", and switches to CPU only if CPU is at least 20% faster. Otherwise it keeps the GPU and logs that. Existing crash fallback to CPU is unchanged.
+- Worker recycle limit raised from 1200 MB to 2200 MB working set (still also every 40 pages), because the bigger batches use more RAM on CPU (about 1.0-1.2 GB peak in my CPU tests); with 1200 it would have restarted the worker (and re-paid session creation) every page on CPU.
+- Link clicks, crash.log, child-process OCR, 64 MB stacks, sort-panic fix are all kept. Tabs/zoom not in this build.
+- Env switches for testing only: LITEPDF_DET (detector long side), LITEPDF_ROWS (batch sizes), LITEPDF_FIXED=1 (use fixed sessions on CPU).
+
+VERIFIED HERE (Wine on host Linux, CPU only, a proxy for his Windows PC)
+- Fixed-session code path gives correct text: on the 3 screenshot pages 2438 words (default), 2484 at detector 960, 2449 with fixed CPU sessions; 0 failed. Detector 1216 vs 960 made almost no difference in words on these low-res screenshots; I kept 1216 because his real renders have small text.
+- Timing lines, memory lines, adapter line, build line, forced-failure halving, crash fallback, worker recycle logic all produce output as designed.
+- Per-stage timing on CPU shows recognition dominates: detector ~0.5 s/page, recognizer 4-23 s/page (23 s for the 329-line dense page, 2 CPU threads). So the CPU number here says nothing about his GPU.
+NOT VERIFIED (only his PC): DirectML actually benefiting from the overrides, per-page speed, session creation/warm-up time on the RTX 3050, VRAM use, whether any batch fails and halves, watchdog behaviour, GPU adapter name line on Windows, links click, UI. DirectML itself could not run under Wine.
+After his run, the key lines in ocr.log are the "created ... session" lines (warm-up cost) and "page N timing". Zoom lag/tabs not done. Repo push still held.
+EOF
+tools agent_message send --to agent-01M2K1RFG71SJETW3996TFKAT0 --attachments /downloads/LitePDF-Setup.exe.part1 --message-stdin < /tmp/r2.txt
+tools agent_message send --to agent-01M2K1RFG71SJETW3996TFKAT0 --attachments /downloads/LitePDF-Setup.exe.part2 --message "Part 2 of 2 (build b3): 15,102,394 bytes, sha256 8998ee8d5ba5371aa034fea6ff98cf4dba78ee450d046acb8470a9b701f1a03c. Join after part1; full file sha256 bb1622f6e7f2119680e828fce2eda36107489363be4c472e09e3106cc31ee098."

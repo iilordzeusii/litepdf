@@ -1,0 +1,1 @@
+cd /tmp/scratch/app; sed -i 's/self.perf.sync_frame < 2/self.perf.sync_frame < 1/' src/app.rs; source /tmp/scratch/wenv.sh; timeout 115 cargo build --release --target x86_64-pc-windows-gnu --bin litepdf 2>&1 | grep -E '^error|Finished' -A5 | head -5; ls -la target/x86_64-pc-windows-gnu/release/litepdf.exe; sha256sum target/x86_64-pc-windows-gnu/release/litepdf.exe

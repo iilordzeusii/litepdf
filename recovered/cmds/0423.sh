@@ -1,0 +1,1 @@
+cd /tmp/scratch/ocrt; env -i HOME=$HOME PATH=/usr/local/bin:/usr/bin:/bin:$HOME/.cargo/bin RUST_FONTCONFIG_DLOPEN=1 bash -c 'source ~/.cargo/env; cargo build --release 2>&1 | grep -E "^error|-->|Finished|^\s+\|" | head -60'

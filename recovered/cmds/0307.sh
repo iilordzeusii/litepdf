@@ -1,0 +1,2 @@
+cd /tmp/scratch/tess; echo "11:32 ops::add_text_layer written; testing via shot/src/bin/ocrtest.rs (tsv->invisible text)" >> ~/NOTES_native.md
+pdftoppm -r 300 -f 1 -l 1 -png ../t.pdf sc >/dev/null 2>&1; convert sc-1.png -density 300 -units PixelsPerInch scan_raw.pdf 2>&1 | head -2; ls -la scan_raw.pdf | awk '{print $5}'; pdftotext scan_raw.pdf - 2>/dev/null | head -2; pdfinfo scan_raw.pdf 2>/dev/null | grep "Page size"; pdfinfo ../t.pdf 2>/dev/null | grep "Page size"

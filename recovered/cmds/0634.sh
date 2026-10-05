@@ -1,0 +1,1 @@
+cd /tmp/scratch/wt; args=""; for i in $(seq 113); do args="$args book.pdf 1-3"; done; qpdf --empty --pages $args -- big.pdf 2>&1 | tail -2; ls -la big.pdf; source /tmp/scratch/wenv2.sh; timeout 100 $WINE rendcli.exe big.pdf 2>&1 | grep -v fixme | tail -8

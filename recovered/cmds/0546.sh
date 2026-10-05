@@ -1,0 +1,1 @@
+cd /tmp; sed -n 36,66p f_28305.txt | cut -c1-300; echo ======; sed -n 1,60p f_165.txt | cut -c1-400; echo =====; grep -i -n "batch\|speed\|faster\|pages\|sec\|gpu" f_ocrmypdf-paddleocr-plus.txt | cut -c1-300 | head -25; echo ====; sed -n 5,40p f_514.txt | cut -c1-500; echo ===; grep -i -n "ms\|pages\|faster\|speed\|batch" f_pogo.txt | cut -c1-250 | head -25

@@ -1,0 +1,1 @@
+ls -d ~/.cargo/registry/src/*/libz-sys*/src/zlib* ~/.cargo/registry/src/*/libz-sys*/ 2>/dev/null | head; find ~/.cargo/registry/src -name "inflate.c" | head -3; find / -name "zlib1.dll" -o -name "zlib.h" 2>/dev/null | grep -v proc | head

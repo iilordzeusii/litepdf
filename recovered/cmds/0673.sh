@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; grep -n 'Duration::from_millis\|animation_time\|settled\|request_repaint_after\|zoom_t\|from_secs_f32\|tooltip\|smooth\|refresh_due = Some\|exp()' app.rs main.rs | cut -c1-210

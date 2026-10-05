@@ -1,0 +1,1 @@
+tools github search-code --query 'repo:iilordzeusii/focus-forge' --limit 50 --json 2>&1 | head -c 1500; tools github search-code --query 'pdfjs repo:iilordzeusii/focus-forge' --json 2>&1 | head -c 800

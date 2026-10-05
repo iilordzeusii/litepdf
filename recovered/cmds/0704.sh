@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; grep -n 'let zd = {' app.rs; grep -n 'if zd != 1.0' app.rs | head -2; sed -n "$(grep -n 'if zd != 1.0' app.rs | head -1 | cut -d: -f1),+0p" app.rs; grep -n 'let mut req = 0.0f32' app.rs; sed -n "$(grep -n 'let mut req = 0.0f32' app.rs | cut -d: -f1),+16p" app.rs | cut -c1-250

@@ -1,0 +1,1 @@
+cd /tmp; env | grep -i -E 'github|gh_|token' | sed 's/=.*/=<set>/'; which gh git curl; tools github list-accounts --json 2>&1 | head -c 400; curl -sIL -m 15 https://github.com/iilordzeusii/focus-forge/raw/main/1-focus-forge-v1.6.2.zip | head -5

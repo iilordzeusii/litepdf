@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src/pdf; sed -n 1160,1200p annotation.rs; grep -n "pub struct AnnotationDefaultAppearance" -A8 annotation.rs; grep -n "AnnotationColor" annotation.rs | head -5; grep -rn "enum AnnotationColor" .. | head -2

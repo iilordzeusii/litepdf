@@ -1,0 +1,1 @@
+cd /tmp/scratch; export NSISDIR=/tmp/scratch/nsis-root/usr/share/nsis; export LD_LIBRARY_PATH=/tmp/scratch/nsis-root/usr/lib/x86_64-linux-gnu; nsis-root/usr/bin/makensis -V1 litepdf.nsi 2>&1 | tail -5; ls -la LitePDF-Setup.exe

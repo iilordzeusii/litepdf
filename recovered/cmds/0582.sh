@@ -1,0 +1,1 @@
+cd ~/pdfapp/web; grep -n -i "IntersectionObserver\|Worker\|requestAnimationFrame\|transform\|scale(\|drawPixmap\|putImageData\|createImageBitmap\|toPixmap\|asPNG\|devicePixelRatio" app.js engine.js | cut -c1-200 | head -30; ls -la ~/pdfapp/litepdf.exe | cut -c1-80

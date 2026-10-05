@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/mupdf-0.8.0/src/pdf; sed -n 10,40p widget.rs; sed -n 205,236p widget.rs; sed -n 470,482p page.rs; grep -n "pub fn bounds\|pub fn rect" annotation.rs | head; grep -n "WidgetType\|fn " /tmp/scratch/app/src/ops.rs | head -50

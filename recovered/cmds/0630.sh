@@ -1,0 +1,1 @@
+cd /tmp/scratch/wt; source /tmp/scratch/wenv2.sh; cp /tmp/scratch/app/target/x86_64-pc-windows-gnu/release/rendcli.exe .; ls *.pdf; timeout 100 wine rendcli.exe book.pdf 2>&1 | grep -v fixme | tail -15

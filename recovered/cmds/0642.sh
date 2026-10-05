@@ -1,0 +1,4 @@
+cd /tmp/scratch; head -c 16000000 LitePDF-Setup.exe > /tmp/LitePDF-Setup-b4.part1; tail -c +16000001 LitePDF-Setup.exe > /tmp/LitePDF-Setup-b4.part2; ls -l /tmp/LitePDF-Setup-b4.part*; sha256sum /tmp/LitePDF-Setup-b4.part*; cat /tmp/LitePDF-Setup-b4.part1 /tmp/LitePDF-Setup-b4.part2 | sha256sum; cp /tmp/LitePDF-Setup-b4.part1 /tmp/LitePDF-Setup-b4.part2 /downloads/
+tools agent_message send --to agent-01M2K1RFG71SJETW3996TFKAT0 --attachments /downloads/LitePDF-Setup-b4.part1 --message-stdin <<'EOF'
+b4 installer, part 1 of 2 (16,000,000 bytes). Part 2 follows in the next message. Reassemble on Windows: `copy /b LitePDF-Setup-b4.part1+LitePDF-Setup-b4.part2 LitePDF-Setup.exe`. Full file: 31,143,529 bytes, SHA-256 07b6bf80e9d2db7c49b55e163cc33b18cf2412be11880e05254f5c450d347eef (b3 was 31,102,394, so +41 KB). Report with verified/unverified follows after part 2.
+EOF

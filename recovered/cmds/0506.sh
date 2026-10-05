@@ -1,0 +1,1 @@
+cd /tmp/scratch/app; source /tmp/scratch/wenv.sh >/dev/null 2>&1; cargo build --release --target x86_64-pc-windows-gnu 2>&1 | tail -5; grep -n "crash" src/main.rs src/bin/ocrcli.rs | head; grep -n "fn ocr_log\|snap" src/extras.rs src/bin/ocrcli.rs | head; ls -la target/x86_64-pc-windows-gnu/release/*.exe

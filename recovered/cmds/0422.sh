@@ -1,0 +1,1 @@
+cd /tmp/scratch/ocrt; env -i HOME=$HOME PATH=/usr/local/bin:/usr/bin:/bin:$HOME/.cargo/bin bash -c 'source ~/.cargo/env; cargo tree -i yeslogic-fontconfig-sys 2>&1 | head -12'; cd ../shot; ls target/release/*.d 2>/dev/null | head -3; ls ~/.cargo/registry/src/*/ | grep -i font | head

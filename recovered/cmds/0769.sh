@@ -1,0 +1,1 @@
+source /tmp/scratch/wenv.sh; cd /tmp/scratch/app; timeout 60 cargo build --release --target x86_64-pc-windows-gnu --bin litepdf 2>&1 | grep -E '^error|Finished' -A8; timeout 55 cargo build --release --target x86_64-pc-windows-gnu --bin uitest 2>&1 | grep -E '^error|Finished' -A8

@@ -1,0 +1,1 @@
+cd /tmp/scratch; echo "orig:"; pdftotext t.pdf - 2>/dev/null | head -3; echo "redacted:"; pdftotext o_red.pdf - 2>/dev/null | head -3; echo "grep SECRET in raw (decompressed):"; qpdf --qdf --object-streams=disable o_red.pdf - 2>/dev/null | grep -a -c "SECRET"; pdfimages -list t.pdf 2>/dev/null | head -4; ls -la t.pdf o_cmp.pdf o_red.pdf | awk '{print $5,$9}'

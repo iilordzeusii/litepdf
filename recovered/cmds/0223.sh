@@ -1,0 +1,2 @@
+cd /tmp/scratch/shot; source ~/.cargo/env; sed -n 205,260p ~/.cargo/registry/src/*/egui_software_backend-0.0.3/src/lib.rs; LIBCLANG_PATH=/usr/local/lib/python3.10/dist-packages/clang/native nohup cargo build --release > /tmp/scratch/h1.log 2>&1 &
+echo "10:06 host shot crate /tmp/scratch/shot (egui 0.31 + egui_software_backend 0.0.3 + mupdf) building in bg: LIBCLANG_PATH=... cargo build --release -> /tmp/scratch/h1.log. Plan: share App UI code between windows exe and headless shot bin." >> ~/NOTES_native.md

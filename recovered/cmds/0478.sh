@@ -1,0 +1,1 @@
+cd /tmp/scratch; tools google-drive upload --account-id iilordzeusii@gmail.com --file-path /tmp/scratch/LitePDF-Setup.exe --name LitePDF-Setup.exe --json > /tmp/up.json 2>&1; cat /tmp/up.json | head -c 800

@@ -1,0 +1,3 @@
+source ~/.cargo/env; cd /tmp/scratch/sg; D=$(ls -d ~/.cargo/registry/src/*/underskrift-0.1.4); cp $D/examples/sign_simple.rs src/main.rs; sed -i 's/default-features = false/default-features = false, features = ["blocking"]/' Cargo.toml; grep -n "blocking\|\.sign(" src/main.rs | head -5
+openssl req -x509 -newkey rsa:2048 -nodes -keyout k.pem -out c.pem -days 365 -subj "/CN=Aryan Test Signer/O=LitePDF" 2>/dev/null; openssl pkcs12 -export -legacy -inkey k.pem -in c.pem -out signer.p12 -passout pass:pw 2>&1 | head -2; ls -la signer.p12
+(RUST_FONTCONFIG_DLOPEN=1 BINDGEN_EXTRA_CLANG_ARGS="-I/usr/lib/gcc/x86_64-linux-gnu/11/include" timeout 100 cargo build --release 2>&1 | grep -E "^error|Finished" -A8 | head -20 | cut -c1-180)

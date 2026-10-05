@@ -1,0 +1,1 @@
+echo "10:18 host shot build running (log /tmp/scratch/h2.log); then: cd /tmp/scratch/shot; ./target/release/shot t.pdf m0.png 1.0 ; convert ppm->png; send M0 screenshot to parent." >> ~/NOTES_native.md; sleep 90; grep -E "^error|Finished" -A8 /tmp/scratch/h2.log | head -12 | cut -c1-200

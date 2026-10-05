@@ -1,0 +1,1 @@
+cd /tmp/scratch/tess; sed -i 's/set(LIB_Ws2_32 Ws2_32)/set(LIB_Ws2_32 ws2_32)/' tesseract-5.5.2/CMakeLists.txt; cd bt; cmake . >/dev/null 2>&1; (timeout 100 make tesseract 2>&1 | grep -E "error|Built target tesseract" | head -4 | cut -c1-200); ls -la bin/tesseract.exe

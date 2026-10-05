@@ -1,0 +1,1 @@
+cd ~/.cargo/registry/src/*/egui-0.34.3/src; grep -n 'smooth_wheel_delta\|ScrollAnimation\|scroll_animation\|fn begin_pass\|unprocessed' input_state/wheel_state.rs | head -40; grep -n 'scroll_animation' -r . | head; sed -n 1,5p /dev/null; grep -n 'vsync\|swap_interval\|SwapInterval' ../../eframe-0.34*/src/native/*.rs | head; grep -n 'fn request_repaint' -A3 context.rs | head -12

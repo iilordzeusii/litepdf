@@ -1,0 +1,1 @@
+cd /tmp/scratch; for f in tess/bt/bin/tesseract.exe stage/litepdf.exe; do echo == $f; x86_64-w64-mingw32-objdump -p $f 2>/dev/null | grep "DLL Name" | sort -u || objdump -p $f | grep "DLL Name" | sort -u; done 2>&1 | head -40; which objdump llvm-objdump

@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; sed -n 90,167p extras.rs; sed -n 555,580p app.rs; sed -n 650,670p app.rs; sed -n 170,215p ops.rs; ls /tmp/scratch/shot /tmp/scratch/shot/src/bin 2>/dev/null; cat /tmp/scratch/shot/Cargo.toml; nproc

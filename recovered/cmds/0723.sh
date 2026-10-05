@@ -1,0 +1,1 @@
+S=$(ls -d ~/.cargo/registry/src/*/mupdf-sys-0.8.0); grep -rn 'mupdf_new_base_context' $S --include=*.c --include=*.h --include=*.rs -l | head; grep -n -B3 -A25 'mupdf_new_base_context' $S/wrapper.c | head -80

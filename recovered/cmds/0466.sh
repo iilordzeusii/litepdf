@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; sed -i 's#^OutFile#Icon "/tmp/scratch/app/icon.ico"\nUninstallIcon "/tmp/scratch/app/icon.ico"\nOutFile#' /tmp/scratch/litepdf.nsi; grep -n "compress\|Compress" ops.rs app.rs | head -20

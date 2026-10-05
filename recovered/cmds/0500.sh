@@ -1,0 +1,1 @@
+tools observations sql --query "SELECT o.ts, length(s.text) n, s.text FROM observations o JOIN slack_messages s ON s.observation_id=o.id WHERE o.ts >= '2026-10-04T19:40:00+05:30' AND s.text ILIKE '%OCR pages 1-1 of 339%' ORDER BY o.ts DESC LIMIT 1" --json 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['rows'][0][2] if d['rows'] else 'none')" | head -120

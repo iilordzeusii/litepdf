@@ -1,0 +1,1 @@
+cd /tmp/scratch/ocrdl; curl -sL -m 100 -o dml.zip https://api.nuget.org/v3-flatcontainer/microsoft.ml.onnxruntime.directml/1.22.1/microsoft.ml.onnxruntime.directml.1.22.1.nupkg; ls -la dml.zip; unzip -l dml.zip | grep -E "x64|\.dll"; curl -sL -m 100 -o ortlin.tgz https://github.com/microsoft/onnxruntime/releases/download/v1.22.1/onnxruntime-linux-x64-1.22.1.tgz; ls -la ortlin.tgz

@@ -1,0 +1,1 @@
+cd /tmp; which mutool && mutool draw -q -F text o_ocr2.pdf | head -3; grep -n "mupdf-sys\|stext" ~/.cargo/registry/src/*/mupdf-0.8.0/src/text_page.rs | head -20; grep -n "bitflags" -A25 ~/.cargo/registry/src/*/mupdf-0.8.0/src/text_page.rs | grep "const" | head -20

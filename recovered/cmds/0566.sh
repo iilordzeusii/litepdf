@@ -1,0 +1,1 @@
+cd /tmp/scratch/wt; source /tmp/scratch/wenv2.sh >/dev/null 2>&1; LITEPDF_FIXED=1 timeout 60 $WINE ocrcli.exe --ocr p4.pdf 0 0 2>&1 | grep -v "fixme\|^S " | cut -c1-250 | tail -15; echo rc=${PIPESTATUS[0]}

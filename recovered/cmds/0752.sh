@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; grep -n 'zrem\|zoom_t\b' app.rs | cut -c1-160 | head; grep -n 'fn page_h\|fn layout\|self.zoom \*\|pixels_per_point\|ppp' app.rs | cut -c1-200 | head -20; grep -n 'unstable_dt\|stable_dt' app.rs | head -3

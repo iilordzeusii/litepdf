@@ -1,0 +1,1 @@
+cd /tmp/scratch/app/src; grep -n 'ai_use_text\|ai_use_image\|ai_scope_doc\|fn ai_panel\|fn ai_\|fn run_ai\|api_key\|anthropic\|openai' app.rs extras.rs | cut -c1-220 | head -40; grep -n 'Key::Tab\|Key::W\|dropped_files\|fn tab_strip\|Key::T\b' app.rs | cut -c1-200

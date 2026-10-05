@@ -1,0 +1,1 @@
+cd /tmp/ff; cat package.json; grep -n -i -E 'pdf|canvas|worker|devicePixelRatio|scale|viewport|iframe|embed|object' src/main.ts | cut -c1-220 | head -80; cat src-tauri/tauri.conf.json | head -40; grep -n -i pdf src-tauri/src/lib.rs | head

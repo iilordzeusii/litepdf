@@ -1,0 +1,1 @@
+cd /tmp/scratch/shot; env -i HOME=$HOME PATH=/usr/local/bin:/usr/bin:/bin:$HOME/.cargo/bin bash -c 'source ~/.cargo/env; cargo build --release --bin ocr2test 2>&1 | grep -E "^error|-->|Finished|\^" | head -40'
