@@ -9,7 +9,7 @@ use std::sync::{Arc, Condvar, Mutex};
 use std::time::Instant;
 
 pub const TILE: i32 = 1024;
-pub const BASE_SIDE: f32 = 640.0;
+pub const BASE_SIDE: f32 = 1100.0;
 pub const WORKERS: usize = 3;
 
 #[derive(Clone, Copy, PartialEq, Eq, Hash, Debug)]

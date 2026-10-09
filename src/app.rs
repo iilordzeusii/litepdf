@@ -1180,7 +1180,7 @@ impl Perf {
     }
 }
 
-const TEX_BUDGET: usize = 96 << 20;
+const TEX_BUDGET: usize = 160 << 20;
 const UPLOAD_BUDGET: usize = 12 << 20;
 
 impl App {

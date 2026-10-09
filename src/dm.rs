@@ -73,13 +73,15 @@ mod imp {
             let manager: IDirectManipulationManager = CoCreateInstance(&DirectManipulationManager, None, CLSCTX_INPROC_SERVER).map_err(|e| format!("manager {e}"))?;
             let update: IDirectManipulationUpdateManager = manager.GetUpdateManager().map_err(|e| format!("update mgr {e}"))?;
             let viewport: IDirectManipulationViewport = manager.CreateViewport(None::<&IDirectManipulationFrameInfoProvider>, hwnd).map_err(|e| format!("viewport {e}"))?;
-            let cfg = DIRECTMANIPULATION_CONFIGURATION_INTERACTION | DIRECTMANIPULATION_CONFIGURATION_TRANSLATION_X | DIRECTMANIPULATION_CONFIGURATION_TRANSLATION_Y | DIRECTMANIPULATION_CONFIGURATION_TRANSLATION_INERTIA | DIRECTMANIPULATION_CONFIGURATION_RAILS_X | DIRECTMANIPULATION_CONFIGURATION_RAILS_Y | DIRECTMANIPULATION_CONFIGURATION_SCALING;
+            let cfg = DIRECTMANIPULATION_CONFIGURATION_INTERACTION | DIRECTMANIPULATION_CONFIGURATION_TRANSLATION_X | DIRECTMANIPULATION_CONFIGURATION_TRANSLATION_Y | DIRECTMANIPULATION_CONFIGURATION_TRANSLATION_INERTIA | DIRECTMANIPULATION_CONFIGURATION_SCALING;
             viewport.ActivateConfiguration(cfg).map_err(|e| format!("cfg {e}"))?;
             viewport.SetViewportOptions(DIRECTMANIPULATION_VIEWPORT_OPTIONS_MANUALUPDATE).map_err(|e| format!("opts {e}"))?;
             let r = RECT { left: 0, top: 0, right: 1000, bottom: 1000 };
             viewport.SetViewportRect(&r).map_err(|e| format!("rect {e}"))?;
             manager.Activate(hwnd).map_err(|e| format!("activate {e}"))?;
             viewport.Enable().map_err(|e| format!("enable {e}"))?;
+            // Default zoom bounds (about 1.0 minimum) make DM rubber-band pinch-out/in and then snap back, which felt like the zoom fighting the fingers. Open them wide; the app clamps the real zoom itself.
+            if let Ok(pc) = viewport.GetPrimaryContent::<IDirectManipulationPrimaryContent>() { let _ = pc.SetZoomBoundaries(0.05, 40.0); }
             let h: IDirectManipulationViewportEventHandler = Handler.into();
             viewport.AddEventHandler(Some(hwnd), &h).map_err(|e| format!("handler {e}"))?;
             if !SetWindowSubclass(hwnd, Some(subclass), 0x4C50, 0).as_bool() { return Err("subclass failed".into()); }
