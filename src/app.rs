@@ -419,7 +419,7 @@ impl App {
             let area = ui.available_rect_before_wrap(); self.view_w = area.width();
             // zoom
             // raw zoom: pinch gesture events and ctrl+wheel (a Windows touchpad pinch arrives as ctrl+wheel); egui's own zoom_delta smooths ctrl+wheel
-            let (dmx, dmy, dmz) = { dm::set_dpr(ctx.pixels_per_point()); dm::tick(); if dm::active() { ctx.request_repaint(); } dm::take() };
+            let (dmx, dmy, dmz) = { dm::set_dpr(ctx.pixels_per_point()); dm::tick(); if dm::active() { ctx.request_repaint(); } let t = dm::take(); if t.2 != 1.0 { (0.0, 0.0, t.2) } else { t } };
             let (zd0, zn, zdirect) = { let hov = ui.input(|i| i.pointer.hover_pos()).map_or(false, |p| area.contains(p)); let hh = area.height(); let zs = self.diag.z_sens;
                 ui.input(|i| { let mut z = 1.0f32; let mut zn = 0.0f32; let mut zw = 0.0f32; let mut zdir = false;
                     for e in &i.events { match e {
@@ -436,7 +436,7 @@ impl App {
             let zdirect = zdirect || dmz != 1.0; self.ztarget = (self.ztarget * zd0 * dmz * zn.exp()).clamp(0.1, 8.0);
             let zdt = ui.input(|i| i.unstable_dt).clamp(0.001, 0.05);
             let zd = { let nz = if zdirect { self.ztarget } else { zoom_step(self.zoom, self.ztarget, zdt) }; if nz != self.ztarget { ctx.request_repaint(); } nz / self.zoom };
-            if zd != 1.0 { self.zoom_t = std::time::Instant::now(); let old = self.zoom; self.zoom = (self.zoom * zd).clamp(0.1, 8.0); let pa = ui.input(|i| i.pointer.hover_pos()).filter(|p| area.contains(*p)).unwrap_or(area.center()); let ay = pa.y - area.top(); let ax = pa.x - area.center().x; let k = self.zoom / old; self.scroll = (self.scroll + ay) * k - ay; self.hx = (self.hx + ax) * k - ax; }
+            if zd != 1.0 { self.zoom_t = std::time::Instant::now(); let old = self.zoom; self.zoom = (self.zoom * zd).clamp(0.1, 8.0); let pa = ui.input(|i| i.pointer.hover_pos()).filter(|p| area.contains(*p)).unwrap_or(area.center()); let ay = pa.y - area.top(); let ax = pa.x - area.center().x; let k = self.zoom / old; { let gp = 12.0f32; let (mut y, mut pg, mut fr) = (gp, 0usize, 0.0f32); let target = self.scroll + ay; for (i, sz) in self.sizes.iter().enumerate() { let h = sz.y * old; if target < y + h + gp || i + 1 == self.sizes.len() { pg = i; fr = (target - y) / h.max(1.0); break; } y += h + gp; } let mut ny = gp; for (i, sz) in self.sizes.iter().enumerate() { if i == pg { ny += fr * sz.y * self.zoom; break; } ny += sz.y * self.zoom + gp; } self.scroll = ny - ay; } self.hx = (self.hx + ax) * k - ax; }
             self.zlast = self.zoom; let settled = true;
             let resp = ui.interact(area, ui.id().with("canvas"), egui::Sense::click_and_drag());
             // touchpad / wheel: read the raw events ourselves (egui's own easing is a ~43 ms low-pass plus coasting)
@@ -491,6 +491,22 @@ impl App {
             let total: f32 = self.sizes.iter().map(|s| s.y * self.zoom + gap).sum();
             { let mw = self.sizes.iter().map(|s| s.x).fold(0.0f32, f32::max) * self.zoom + 2.0 * gap; let lim = ((mw - area.width()) / 2.0).max(0.0); self.hx = self.hx.clamp(-lim, lim); }
             self.scroll = self.scroll.clamp(0.0, (total - area.height()).max(0.0));
+            // document scrollbar: thumb size and position are proportional to the whole document
+            { let max_s = (total - area.height()).max(0.0);
+              if max_s > 1.0 {
+                let track = Rect::from_min_max(pos2(area.right() - 14.0, area.top() + 2.0), pos2(area.right() - 2.0, area.bottom() - 2.0));
+                let th = (track.height() * area.height() / total).clamp(34.0, track.height());
+                let tp = |sc: f32| track.top() + (track.height() - th) * (sc / max_s);
+                let tr0 = Rect::from_min_size(pos2(track.left(), tp(self.scroll)), vec2(track.width(), th));
+                let sb = ui.interact(track.expand2(vec2(4.0, 0.0)), ui.id().with("docsb"), egui::Sense::click_and_drag());
+                if sb.dragged() || sb.clicked() { if let Some(p) = sb.interact_pointer_pos() { let f = ((p.y - track.top() - if sb.dragged() { th / 2.0 } else { th / 2.0 }) / (track.height() - th).max(1.0)).clamp(0.0, 1.0); self.scroll = f * max_s; self.scroll_vel = 0.0; self.perf.active = true; ctx.request_repaint(); } }
+                let tr = Rect::from_min_size(pos2(track.left(), tp(self.scroll)), vec2(track.width(), th)); let _ = tr0;
+                let hot = sb.hovered() || sb.dragged();
+                let p = ctx.layer_painter(egui::LayerId::new(egui::Order::Foreground, egui::Id::new("sbpaint")));
+                if hot { p.rect_filled(track, 6.0, Color32::from_rgba_unmultiplied(255, 255, 255, 14)); }
+                p.rect_filled(tr.shrink2(vec2(if hot { 1.0 } else { 3.0 }, 0.0)), 6.0, if sb.dragged() { Color32::from_rgb(45, 212, 191) } else if hot { Color32::from_rgb(120, 130, 142) } else { Color32::from_rgba_unmultiplied(150, 160, 172, 110) });
+                if sb.dragged() { let pgn = (self.cur_page + 1).min(self.sizes.len().max(1)); egui::Area::new(egui::Id::new("sbtip")).order(egui::Order::Foreground).fixed_pos(pos2(track.left() - 76.0, tr.center().y - 12.0)).interactable(false).show(ctx, |ui| { egui::Frame::NONE.fill(Color32::from_rgb(8, 9, 11)).stroke(Stroke::new(1.0, Color32::from_rgb(60, 66, 76))).corner_radius(8.0).inner_margin(egui::Margin::symmetric(8, 3)).show(ui, |ui| { ui.label(format!("{} / {}", pgn, self.sizes.len())); }); }); }
+              } }
             let mut rects = vec![]; let mut y = area.top() + gap - self.scroll;
             for s in &self.sizes { let sz = *s * self.zoom; rects.push(Rect::from_min_size(pos2(area.center().x - sz.x / 2.0 - self.hx, y), sz)); y += sz.y + gap; }
             let z = self.zoom;
